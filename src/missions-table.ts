@@ -14,6 +14,31 @@ const loadingGeodata = () => p(
   'retrieving…'
 )
 
+const getExtremeDistanceTo10Stream = (
+  extreme: 'shortest' | 'longest',
+  addressesWithData$: Stream<AddressesWithData>,
+  gotAllData$: Stream<null>
+): Stream<null | number> => {
+  const lt = (a: number, b: number) => a < b
+  const gt = (a: number, b: number) => a > b
+  const operator = extreme === 'shortest' ? lt : gt
+
+  return addressesWithData$
+    .fold((extremeDistanceTo10, addressesWithData) => {
+      return Object.values(addressesWithData).reduce((extreme, addressWithData) => {
+        if (addressWithData === null) {
+          return null
+        }
+        if (extreme === null) {
+          return addressWithData.distanceToNumber10
+        }
+        const distanceToNumber10 = addressWithData.distanceToNumber10
+        return operator(distanceToNumber10, extreme) ? distanceToNumber10 : extreme
+      }, null as null | number)
+    }, null as null | number)
+    .compose(dropUntil(gotAllData$))
+}
+
 interface Sources {
   DOM: DOMSource,
   missions: Stream<Mission[]>,
@@ -40,32 +65,30 @@ export default ({
   ]) => Object.keys(addressesWithData).length === missions.length)
   .mapTo(null)
 
-  const shortestDistanceTo10$: Stream<null | number> = addressesWithData$
-    .fold((shortestDistanceTo10, addressesWithData) => {
-      return Object.values(addressesWithData).reduce((shortest, addressWithData) => {
-        if (addressWithData === null) {
-          return null
-        }
-        if (shortest === null) {
-          return addressWithData.distanceToNumber10
-        }
-        const distanceToNumber10 = addressWithData.distanceToNumber10
-        return distanceToNumber10 < shortest ? distanceToNumber10 : shortest
-      }, null as null | number)
-    }, null as null | number)
-    .compose(dropUntil(gotAllData$))
+  const shortestDistanceTo10$ = getExtremeDistanceTo10Stream(
+    'shortest',
+    addressesWithData$,
+    gotAllData$
+  )
+  const longestDistanceTo10$ = getExtremeDistanceTo10Stream(
+    'longest',
+    addressesWithData$,
+    gotAllData$
+  )
 
   const vnode$: Stream<VNode> = xs.combine(
     dateSortedMissions$,
     addressesWithData$,
-    shortestDistanceTo10$
+    shortestDistanceTo10$.debug('shortestDistanceTo10$'),
+    longestDistanceTo10$
   ).map(([
     dateSortedMissions,
     addressesWithData,
-    shortestDistanceTo10
+    shortestDistanceTo10,
+    longestDistanceTo10
   ]) => {
     return div([
-      p('The following table presents the missions data, sorted by date, oldest to most recent. The mission nearest 10 Downing st., London is printed in red. The farthest, in green.'),
+      p('The following table presents the missions data, sorted by date, oldest to most recent. The missions nearest 10 Downing st., London are printed in green. The farthest, in red.'),
       table(
         [
           tr([
@@ -79,7 +102,10 @@ export default ({
           ...dateSortedMissions.map(({ agent, country, address, date }) => {
             const geoData = addressesWithData[address]
             return tr(
-              { class: { ['is-nearest']: geoData && geoData.distanceToNumber10 === shortestDistanceTo10 } },
+              { class: {
+                ['is-nearest']: geoData && geoData.distanceToNumber10 === shortestDistanceTo10,
+                ['is-farthest']: geoData && geoData.distanceToNumber10 === longestDistanceTo10
+              } },
               [
                 td(agent),
                 td(country),
