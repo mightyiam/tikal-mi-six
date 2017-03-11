@@ -1,4 +1,4 @@
-import { DOMSource, div, p, a, table, tr, th, td } from '@cycle/dom'
+import { DOMSource, div, p, a, table, tr, th, td, label, input } from '@cycle/dom'
 import xs, { Stream } from 'xstream'
 import dropUntil from 'xstream/extra/dropUntil'
 import { Mission } from './interfaces'
@@ -76,19 +76,30 @@ export default ({
     gotAllData$
   )
 
+  const showExtraData$: Stream<boolean> = DOM
+    .select('.show-extra')
+    .events('change')
+    .fold(value => !value, false)
+
   const vnode$: Stream<VNode> = xs.combine(
     dateSortedMissions$,
     addressesWithData$,
     shortestDistanceTo10$,
-    longestDistanceTo10$
+    longestDistanceTo10$,
+    showExtraData$
   ).map(([
     dateSortedMissions,
     addressesWithData,
     shortestDistanceTo10,
-    longestDistanceTo10
+    longestDistanceTo10,
+    showExtraData
   ]) => {
     return div([
       p('The following table presents the missions data, sorted by date, oldest to most recent. The missions nearest 10 Downing st., London are printed in green. The farthest, in red.'),
+      p([label([
+        'Show extra data: ',
+        input({ attrs: { type: 'checkbox' }, class: { 'show-extra': true } })
+      ])]),
       table(
         [
           tr([
@@ -96,8 +107,8 @@ export default ({
             th('Country'),
             th('Address'),
             th('Date'),
-            th('Coordinates'),
-            th('Distance to #10')
+            th({ class: { 'is-hidden': !showExtraData } }, 'Coordinates'),
+            th({ class: { 'is-hidden': !showExtraData } }, 'Distance to #10')
           ]),
           ...dateSortedMissions.map(({ agent, country, address, date }) => {
             const geoData = addressesWithData[address]
@@ -111,11 +122,17 @@ export default ({
                 td(country),
                 td(address),
                 td(date),
-                td(!geoData ? loadingGeodata : a(
-                  { attrs: { href: `geo:${geoData.position.lat},${geoData.position.lng}` } },
-                  toDMS(geoData.position).format()
-                )),
-                td(!geoData ? loadingGeodata : String(geoData.distanceToNumber10) + 'km')
+                td(
+                  { class: { 'is-hidden': !showExtraData } },
+                  !geoData ? loadingGeodata : a(
+                    { attrs: { href: `geo:${geoData.position.lat},${geoData.position.lng}` } },
+                    toDMS(geoData.position).format()
+                  )
+                ),
+                td(
+                  { class: { 'is-hidden': !showExtraData } },
+                  !geoData ? loadingGeodata : String(geoData.distanceToNumber10) + 'km'
+                )
               ]
             )
           })
