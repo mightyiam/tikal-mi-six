@@ -135,7 +135,11 @@ export default ({
                 )
               ]
             )
-          })
+          }),
+          tr(td(
+            { attrs: { colspan: showExtraData ? 6 : 4 } },
+            String(dateSortedMissions.length) + ' missions'
+          ))
         ]
       )
     ])
