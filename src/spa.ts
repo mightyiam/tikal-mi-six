@@ -110,7 +110,11 @@ export default ({ DOM, HTTP, missions: missions$ }: Sources) => {
     missionsTableVnode
   ]) => (
     body(
-      { id: '' }, // workaround for https://github.com/cyclejs/cyclejs/issues/540
+      {
+        props: {
+          id: '' // workaround for https://github.com/cyclejs/cyclejs/issues/540
+        }
+      },
       [
         h1('MI6 missions report'),
         dl([
