@@ -79,7 +79,7 @@ export default ({
   const vnode$: Stream<VNode> = xs.combine(
     dateSortedMissions$,
     addressesWithData$,
-    shortestDistanceTo10$.debug('shortestDistanceTo10$'),
+    shortestDistanceTo10$,
     longestDistanceTo10$
   ).map(([
     dateSortedMissions,
