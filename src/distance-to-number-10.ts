@@ -19,4 +19,6 @@ const toLongForm = (pos: LongForm | ShortForm): LongForm => {
   }
 }
 
-export default (pos: ShortForm | LongForm) => ghd(toLongForm(pos), NUMBER_10)
+export default (pos: ShortForm | LongForm) => (
+  Math.round(ghd(toLongForm(pos), NUMBER_10) / 1000)
+)

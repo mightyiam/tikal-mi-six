@@ -115,7 +115,7 @@ export default ({
                   { attrs: { href: `geo:${geoData.position.lat},${geoData.position.lng}` } },
                   toDMS(geoData.position).format()
                 )),
-                td(!geoData ? loadingGeodata : String(Math.round(geoData.distanceToNumber10 / 1000)) + 'km')
+                td(!geoData ? loadingGeodata : String(geoData.distanceToNumber10) + 'km')
               ]
             )
           })
