@@ -1,0 +1,16 @@
+.geo-loading-indicator {
+  animation: fade-in-out 1s linear infinite;
+}
+
+@keyframes fade-in-out {
+  50% { opacity: 0; };
+}
+
+.confidential {
+  background: black;
+  color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
