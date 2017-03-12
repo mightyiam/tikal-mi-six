@@ -9,6 +9,7 @@
   $border-width: 2px;
   $border-width-thick: 4px;
   $border-color: #cccccc;
+  $border-color-light: #dddddd;
 
   display: table;
 
@@ -49,6 +50,7 @@
 
     tr:not(:last-child) td {
       border-bottom-style: $border-style;
+      border-bottom-color: $border-color-light;
     }
   }
 }
