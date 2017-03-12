@@ -43,6 +43,9 @@ section.missions-table {
   thead {
     display: table-header-group;
 
+    font-weight: bold;
+    font-size: 16pt;
+
     tr th:not(.last):not(:last-child) {
       border-right-style: $border-style;
       border-right-color: $border-color-light;
