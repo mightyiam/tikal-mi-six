@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .sisyphically-styled {
   all: initial;
   * {
     all: unset;
   }
 
+  font-family: Montserrat, sans-serif;
   $border-style: solid;
   $border-radius: 5px;
   $border-width: 2px;

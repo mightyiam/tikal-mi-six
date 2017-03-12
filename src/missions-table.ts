@@ -1,4 +1,4 @@
-import { DOMSource, div, p, a, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
+import { DOMSource, section, p, a, em, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
 import xs, { Stream } from 'xstream'
 import dropUntil from 'xstream/extra/dropUntil'
 import { Mission } from './interfaces'
@@ -93,8 +93,17 @@ export default ({
     shortestDistanceTo10,
     longestDistanceTo10,
     showExtraData
-  ]) => {
-    return div([
+  ]) => section(
+    { class: { 'missions-table': true } },
+    [
+      p([
+        'The font in the confidential source material was identified as ',
+        a(
+          { attrs: { href: 'https://www.typography.com/fonts/gotham/styles/' } },
+          em('Gotham Book')
+        ),
+        '. To the benefit of Her Majesty’s treasury, I used a free alternative, which seems to bear great resemblence.'
+      ]),
       p('The following table presents the missions data, sorted by date, oldest to most recent. The missions nearest 10 Downing st., London are printed in green. The farthest, in red.'),
       p([label([
         'Show extra data: ',
@@ -145,8 +154,8 @@ export default ({
           }))
         ]
       )
-    ])
-  })
+    ]
+  ))
 
   return {
     DOM: vnode$
