@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+section.missions-table {
+  background-color: #FAFAFA;
+}
+
 .sisyphically-styled {
   all: initial;
   * {
@@ -51,6 +55,8 @@
 
   tbody {
     display: table-row-group;
+
+    background-color: white;
 
     tr {
       &:first-child td {
