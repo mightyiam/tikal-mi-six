@@ -107,13 +107,12 @@ export default ({
             th('Agent ID'),
             th('Country'),
             th('Address'),
-            th({ class: { last: !showExtraData } }, 'Date'),
+            th('Date'),
             th({ class: { 'is-hidden': !showExtraData } }, 'Coordinates'),
-            th({ class: { 'is-hidden': !showExtraData, last: true } }, 'Distance to #10')
+            th({ class: { 'is-hidden': !showExtraData } }, 'Distance to #10')
           ])),
           tfoot(tr(td(
             {
-              class: { last: true },
               attrs: { colspan: showExtraData ? 6 : 4}
             },
             String(dateSortedMissions.length) + ' missions'
@@ -129,7 +128,7 @@ export default ({
                 td(agent),
                 td(country),
                 td(address),
-                td({ class: { last: !showExtraData } }, date),
+                td(date),
                 td(
                   { class: { 'is-hidden': !showExtraData } },
                   !geoData ? loadingGeodata : a(
@@ -138,7 +137,7 @@ export default ({
                   )
                 ),
                 td(
-                  { class: { 'is-hidden': !showExtraData, last: true } },
+                  { class: { 'is-hidden': !showExtraData } },
                   !geoData ? loadingGeodata : String(geoData.distanceToNumber10) + 'km'
                 )
               ]
