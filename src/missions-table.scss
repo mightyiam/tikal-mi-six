@@ -37,6 +37,10 @@ section.missions-table {
 
       border-color: $border-color;
       border-width: 2px;
+
+      $padding-sides: 24px;
+      padding-left: $padding-sides;
+      padding-right: $padding-sides
     }
   }
 
