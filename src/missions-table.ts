@@ -107,7 +107,7 @@ export default ({
             th('Agent ID'),
             th('Country'),
             th('Address'),
-            th('Date'),
+            th({ class: { 'last': !showExtraData } }, 'Date'),
             th({ class: { 'is-hidden': !showExtraData } }, 'Coordinates'),
             th({ class: { 'is-hidden': !showExtraData } }, 'Distance to #10')
           ])),

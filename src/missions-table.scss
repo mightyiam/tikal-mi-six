@@ -31,6 +31,11 @@
 
   thead {
     display: table-header-group;
+
+    tr th:not(.last):not(:last-child) {
+      border-right-style: $border-style;
+      border-right-color: $border-color-light;
+    }
   }
   tfoot {
     display: table-footer-group;
