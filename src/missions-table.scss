@@ -31,22 +31,24 @@
 
   thead {
     display: table-header-group;
-
-    tr:last-child th {
-      border-bottom-style: $border-style;
-      border-bottom-width: $border-width-thick;
-    }
   }
   tfoot {
     display: table-footer-group;
-
-    tr:first-child td {
-      border-top-style: $border-style;
-      border-top-width: $border-width-thick;
-    }
   }
+
   tbody {
     display: table-row-group;
+
+    tr {
+      &:first-child td {
+        border-top-style: $border-style;
+        border-top-width: $border-width-thick;
+      }
+      &:last-child td {
+        border-bottom-style: $border-style;
+        border-bottom-width: $border-width-thick;
+      }
+    }
 
     tr:not(:last-child) td {
       border-bottom-style: $border-style;
