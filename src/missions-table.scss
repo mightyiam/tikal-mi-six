@@ -65,6 +65,10 @@ section.missions-table {
     display: table-footer-group;
     font-size: 17pt;
     text-align: right;
+
+    td {
+      padding-top: 19px;
+    }
   }
 
   tbody {
