@@ -4,11 +4,15 @@
     all: unset;
   }
 
+  $border-style: solid;
+  $border-width: 2px;
+  $border-color: #cccccc;
+
   display: table;
 
-  border-style: solid;
-  border-width: 2px;
-  border-color: #cccccc;
+  border-style: $border-style;
+  border-width: $border-width;
+  border-color: $border-color;
   border-radius: 5px;
 
   tr {
@@ -19,6 +23,8 @@
     }
   }
 
+  border-collapse: collapse;
+
   thead {
     display: table-header-group;
   }
@@ -27,6 +33,12 @@
   }
   tbody {
     display: table-row-group;
+
+    tr:not(:last-child) {
+      border-bottom-style: $border-style;
+      border-bottom-width: $border-width;
+      border-bottom-color: $border-color;
+    }
   }
 }
 
