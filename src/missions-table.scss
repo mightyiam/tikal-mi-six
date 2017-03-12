@@ -28,8 +28,7 @@ section.missions-table {
   border-width: $border-width;
   border-color: $border-color;
 
-  border-spacing: 0 10px;
-  padding-top: 2px;
+  padding-top: 12px;
 
   tr {
     display: table-row;
@@ -47,6 +46,12 @@ section.missions-table {
     tr th:not(.last):not(:last-child) {
       border-right-style: $border-style;
       border-right-color: $border-color-light;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      height: 10px;
     }
   }
   tfoot {
