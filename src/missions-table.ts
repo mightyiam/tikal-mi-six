@@ -1,4 +1,4 @@
-import { DOMSource, div, p, a, table, tr, th, td, label, input } from '@cycle/dom'
+import { DOMSource, div, p, a, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
 import xs, { Stream } from 'xstream'
 import dropUntil from 'xstream/extra/dropUntil'
 import { Mission } from './interfaces'
@@ -103,15 +103,19 @@ export default ({
       table(
         { class: { 'sisyphically-styled': true } },
         [
-          tr([
+          thead(tr([
             th('Agent ID'),
             th('Country'),
             th('Address'),
             th('Date'),
             th({ class: { 'is-hidden': !showExtraData } }, 'Coordinates'),
             th({ class: { 'is-hidden': !showExtraData } }, 'Distance to #10')
-          ]),
-          ...dateSortedMissions.map(({ agent, country, address, date }) => {
+          ])),
+          tfoot(tr(td(
+            { attrs: { colspan: showExtraData ? 6 : 4 } },
+            String(dateSortedMissions.length) + ' missions'
+          ))),
+          tbody(dateSortedMissions.map(({ agent, country, address, date }) => {
             const geoData = addressesWithData[address]
             return tr(
               { class: {
@@ -136,11 +140,7 @@ export default ({
                 )
               ]
             )
-          }),
-          tr(td(
-            { attrs: { colspan: showExtraData ? 6 : 4 } },
-            String(dateSortedMissions.length) + ' missions'
-          ))
+          }))
         ]
       )
     ])
