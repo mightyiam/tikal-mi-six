@@ -3,6 +3,16 @@
   * {
     all: unset;
   }
+
+  display: table;
+
+  tr {
+    display: table-row;
+
+    td, th {
+      display: table-cell;
+    }
+  }
 }
 
 .geo-loading-indicator {
