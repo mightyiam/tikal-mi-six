@@ -81,6 +81,10 @@ section.missions-table {
         border-bottom-style: $border-style;
         border-bottom-width: $border-width-thick;
       }
+
+      td {
+        padding-bottom: 22px;
+      }
     }
 
     tr:not(:last-child) td {
