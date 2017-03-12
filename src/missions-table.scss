@@ -1,3 +1,10 @@
+.sisyphically-styled {
+  all: initial;
+  * {
+    all: unset;
+  }
+}
+
 .geo-loading-indicator {
   animation: fade-in-out 1s linear infinite;
 }

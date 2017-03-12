@@ -101,6 +101,7 @@ export default ({
         input({ attrs: { type: 'checkbox' }, class: { 'show-extra': true } })
       ])]),
       table(
+        { class: { 'sisyphically-styled': true } },
         [
           tr([
             th('Agent ID'),
