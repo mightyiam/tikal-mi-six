@@ -1,0 +1,15 @@
+.geo-loading-indicator {
+  animation: fade-in-out 1s linear infinite;
+}
+
+@keyframes fade-in-out {
+  50% { opacity: 0; };
+}
+
+.is-nearest {
+  color: green;
+}
+
+.is-farthest {
+  color: red;
+}

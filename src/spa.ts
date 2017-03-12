@@ -10,6 +10,8 @@ import dateFormat from './date-format'
 import * as moment from 'moment'
 import getDistanceToNumber10 from './distance-to-number-10'
 
+import './spa.scss'
+
 const MISSION_POSITION = 'mission position'
 
 interface PositionQuery {
