@@ -50,9 +50,15 @@ section.missions-table {
     font-weight: bold;
     font-size: 16pt;
 
-    tr th:not(.last):not(:last-child) {
-      border-right-style: $border-style;
-      border-right-color: $border-color-light;
+    tr {
+      th {
+        padding-bottom: 14px;
+      }
+
+      th:not(.last):not(:last-child) {
+        border-right-style: $border-style;
+        border-right-color: $border-color-light;
+      }
     }
 
     &::after {
