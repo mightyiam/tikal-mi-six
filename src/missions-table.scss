@@ -6,6 +6,7 @@
 
   $border-style: solid;
   $border-radius: 5px;
+  $border-width-thick: 4px;
 
   display: table;
 
@@ -34,6 +35,11 @@
       border-top-style: $border-style;
     }
 
+    tr:last-child th {
+      border-bottom-style: $border-style;
+      border-bottom-width: $border-width-thick;
+    }
+
     th:first-child {
       border-top-left-radius: $border-radius;
     }
@@ -43,6 +49,11 @@
   }
   tfoot {
     display: table-footer-group;
+
+    tr:first-child td {
+      border-top-style: $border-style;
+      border-top-width: $border-width-thick;
+    }
 
     tr:last-child td {
       border-bottom-style: $border-style;
