@@ -31,7 +31,12 @@ const config = {
               sourceMap: true
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
         ]
       }
     ]
