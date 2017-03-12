@@ -19,9 +19,10 @@
   border-color: $border-color;
 
   border-spacing: 0 10px;
+  padding-top: 2px;
+
   tr {
     display: table-row;
-
     td, th {
       display: table-cell;
 
