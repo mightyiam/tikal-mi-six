@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 section.missions-table {
-  background-color: #FAFAFA;
+  $background-color: #FAFAFA;
+  background-color: $background-color;
 
   .sisyphically-styled {
     all: initial;
@@ -58,6 +59,9 @@ section.missions-table {
       font-size: 16pt;
 
       tr {
+        // why is this necessary?
+        background-color: $background-color;
+
         th {
           padding-top: 10px;
           padding-bottom: 14px;
@@ -79,6 +83,11 @@ section.missions-table {
       display: table-footer-group;
       font-size: 17pt;
       text-align: right;
+
+      tr {
+        // why is this necessary?
+        background-color: $background-color;
+      }
 
       td {
         padding-top: 19px;
