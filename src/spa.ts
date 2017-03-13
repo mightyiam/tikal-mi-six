@@ -114,10 +114,11 @@ export default ({ DOM, HTTP, missions: missions$ }: Sources) => {
     {
       props: {
         id: '' // workaround for https://github.com/cyclejs/cyclejs/issues/540
+
       }
     },
     [
-      section([
+      section({ class: { section: true, content: true } }, [
         h1('MI6 missions report'),
         dl([
           dt('agent'),

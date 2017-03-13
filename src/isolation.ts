@@ -87,6 +87,7 @@ export default ({ DOM, missions: missions$ }: Sources) => {
     { agents, countries },
     highestIsolationDegree
   ]) => section(
+    { class: { section: true, content: true } },
     [
       h2('Isolation'),
       h3('Missions'),

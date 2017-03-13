@@ -94,7 +94,7 @@ export default ({
     longestDistanceTo10,
     showExtraData
   ]) => section(
-    { class: { 'missions-table': true } },
+    { class: {  section: true, content: true,'missions-table': true } },
     [
       h2('Missions table'),
       p([
