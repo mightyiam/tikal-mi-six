@@ -120,8 +120,6 @@ export default ({ DOM, HTTP, missions: inputMissions$ }: Sources) => {
     deleteMissionI: deleteMissionI$
   } = MissionsTable({
     DOM,
-    // nearestAddress: xs.of('atlas marina beach, agadir'),
-    // farthestAddress: xs.of('27 Derb Lferrane, Marrakech')
     missions: missions$,
     addressesWithData: addressesWithData$
   })
