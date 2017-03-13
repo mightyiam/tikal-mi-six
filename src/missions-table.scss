@@ -9,6 +9,8 @@ section.missions-table {
       all: unset;
     }
 
+    @import '~bulma/sass/elements/other';
+
     font-family: Montserrat, sans-serif;
     font-size: 20pt;
     color: #565656;
@@ -32,6 +34,7 @@ section.missions-table {
 
     tr {
       display: table-row;
+
       td, th {
         display: table-cell;
 
@@ -41,6 +44,10 @@ section.missions-table {
         $padding-sides: 24px;
         padding-left: $padding-sides;
         padding-right: $padding-sides;
+
+        &.delete-cell {
+          vertical-align: middle;
+        }
       }
     }
 
@@ -56,7 +63,7 @@ section.missions-table {
           padding-bottom: 14px;
         }
 
-        th:not(.last):not(:last-child) {
+        th:not(:first-child):not(.last):not(:last-child) {
           border-right-style: $border-style;
           border-right-color: $border-color-light;
         }
@@ -103,6 +110,14 @@ section.missions-table {
       tr:not(:last-child) td {
         border-bottom-style: $border-style;
         border-bottom-color: $border-color-light;
+      }
+    }
+
+    &:not(:hover) {
+      td, th {
+        &.delete-cell {
+          display: none;
+        }
       }
     }
   }

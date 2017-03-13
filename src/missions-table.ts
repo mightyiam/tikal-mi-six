@@ -1,4 +1,4 @@
-import { DOMSource, section, h2, p, a, em, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
+import { DOMSource, section, h2, p, a, em, table, thead, tfoot, tbody, tr, th, td, label, input, button } from '@cycle/dom'
 import xs, { Stream } from 'xstream'
 import dropUntil from 'xstream/extra/dropUntil'
 import { Mission } from './interfaces'
@@ -114,6 +114,7 @@ export default ({
         { class: { 'sisyphically-styled': true } },
         [
           thead(tr([
+            th({ class: { 'delete-cell': true} }),
             th('Agent ID'),
             th('Country'),
             th('Address'),
@@ -135,6 +136,7 @@ export default ({
                 ['is-farthest']: geoData && geoData.distanceToNumber10 === longestDistanceTo10
               } },
               [
+                td({ class: { 'delete-cell': true } }, button({ class: { delete: true } })),
                 td(agent),
                 td(country),
                 td(address),
