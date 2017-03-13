@@ -1,6 +1,6 @@
 import xs, { Stream } from 'xstream'
 import flattenConcurrently from 'xstream/extra/flattenConcurrently'
-import { VNode, DOMSource, body, section, h1, h2, ul, li, pre, code, p, span } from '@cycle/dom'
+import { VNode, DOMSource, body, section, h1, h2, ul, li, pre, code, p, span, img, a } from '@cycle/dom'
 import { HTTPSource, RequestOptions, Response } from '@cycle/http'
 import { InputMission, Mission, LatLng, AddressesWithData, AddressWithData } from './interfaces'
 import * as stringify from 'stringify-object'
@@ -149,7 +149,11 @@ export default ({ DOM, HTTP, missions: inputMissions$ }: Sources) => {
           li(['agent: ', span({ class: { confidential: true } }, 'Shahar Or')]),
           li('classification: restricted'),
           li('on request of: Tikal'),
-          li('agent status: unknown')
+          li('agent status: unknown'),
+          li(a(
+            { attrs: { href: 'https://travis-ci.org/mightyiam/tikal-mi-six' } },
+            img({ attrs: { alt: 'build status' , src: 'https://travis-ci.org/mightyiam/tikal-mi-six.svg?branch=master' } })
+          ))
         ]),
         h2('Raw missions data'),
         p('The missions data contains corrupted parts. From my experience in the field, it appears to be a result of a sabotage. Likely that field agent who went rogue in \'98.'),
