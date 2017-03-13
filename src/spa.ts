@@ -120,6 +120,7 @@ export default ({ DOM, HTTP, missions: missions$ }: Sources) => {
     [
       section({ class: { section: true, content: true } }, [
         h1('MI6 missions report'),
+        h2('Meta'),
         dl([
           dt('agent'),
           dd(
