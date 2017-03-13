@@ -1,4 +1,7 @@
-export type LatLng = { lat: number; lng: number }
+export interface LatLng {
+  lat: number
+  lng: number
+}
 
 export interface InputMission {
   country: string
