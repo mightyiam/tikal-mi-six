@@ -9,6 +9,7 @@
     "autoprefixer": "^6.7.2",
     "css-loader": "^0.26.4",
     "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.2",
     "sass-loader": "^6.0.3",
     "source-map-loader": "^0.2.0",
     "style-loader": "^0.13.2",
@@ -33,7 +34,7 @@
   },
   "scripts": {
     "lint": "tslint -c tslint.json *.ts *.js",
-    "test": "npm run build",
+    "test": "run-s lint build",
     "dev": "webpack-dev-server",
     "build": "webpack"
   }
