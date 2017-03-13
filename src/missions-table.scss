@@ -2,128 +2,128 @@
 
 section.missions-table {
   background-color: #FAFAFA;
-}
 
-.sisyphically-styled {
-  all: initial;
-  * {
-    all: unset;
-  }
-
-  font-family: Montserrat, sans-serif;
-  font-size: 20pt;
-  color: #565656;
-
-  $border-style: solid;
-  $border-radius: 5px;
-  $border-width: 2px;
-  $border-width-thick: 4px;
-  $border-color: #cccccc;
-  $border-color-light: #dddddd;
-
-  display: table;
-  width: 100%;
-
-  border-style: $border-style;
-  border-radius: $border-radius;
-  border-width: $border-width;
-  border-color: $border-color;
-
-  padding-top: 12px;
-
-  tr {
-    display: table-row;
-    td, th {
-      display: table-cell;
-
-      border-color: $border-color;
-      border-width: 2px;
-
-      $padding-sides: 24px;
-      padding-left: $padding-sides;
-      padding-right: $padding-sides;
+  .sisyphically-styled {
+    all: initial;
+    * {
+      all: unset;
     }
-  }
 
-  thead {
-    display: table-header-group;
+    font-family: Montserrat, sans-serif;
+    font-size: 20pt;
+    color: #565656;
 
-    font-weight: bold;
-    font-size: 16pt;
+    $border-style: solid;
+    $border-radius: 5px;
+    $border-width: 2px;
+    $border-width-thick: 4px;
+    $border-color: #cccccc;
+    $border-color-light: #dddddd;
+
+    display: table;
+    width: 100%;
+
+    border-style: $border-style;
+    border-radius: $border-radius;
+    border-width: $border-width;
+    border-color: $border-color;
+
+    padding-top: 12px;
 
     tr {
-      th {
-        padding-top: 10px;
-        padding-bottom: 14px;
-      }
+      display: table-row;
+      td, th {
+        display: table-cell;
 
-      th:not(.last):not(:last-child) {
-        border-right-style: $border-style;
-        border-right-color: $border-color-light;
+        border-color: $border-color;
+        border-width: 2px;
+
+        $padding-sides: 24px;
+        padding-left: $padding-sides;
+        padding-right: $padding-sides;
       }
     }
 
-    &::after {
-      content: "";
-      display: block;
-      height: 10px;
-    }
-  }
-  tfoot {
-    display: table-footer-group;
-    font-size: 17pt;
-    text-align: right;
+    thead {
+      display: table-header-group;
 
-    td {
-      padding-top: 19px;
-      padding-bottom: 21px;
-    }
-  }
+      font-weight: bold;
+      font-size: 16pt;
 
-  tbody {
-    display: table-row-group;
+      tr {
+        th {
+          padding-top: 10px;
+          padding-bottom: 14px;
+        }
 
-    background-color: white;
-
-    tr {
-      &:first-child td {
-        border-top-style: $border-style;
-        border-top-width: $border-width-thick;
+        th:not(.last):not(:last-child) {
+          border-right-style: $border-style;
+          border-right-color: $border-color-light;
+        }
       }
-      &:last-child td {
-        border-bottom-style: $border-style;
-        border-bottom-width: $border-width-thick;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 10px;
       }
+    }
+    tfoot {
+      display: table-footer-group;
+      font-size: 17pt;
+      text-align: right;
 
       td {
-        padding-top: 17px;
-        padding-bottom: 22px;
+        padding-top: 19px;
+        padding-bottom: 21px;
       }
     }
 
-    tr:not(:last-child) td {
-      border-bottom-style: $border-style;
-      border-bottom-color: $border-color-light;
+    tbody {
+      display: table-row-group;
+
+      background-color: white;
+
+      tr {
+        &:first-child td {
+          border-top-style: $border-style;
+          border-top-width: $border-width-thick;
+        }
+        &:last-child td {
+          border-bottom-style: $border-style;
+          border-bottom-width: $border-width-thick;
+        }
+
+        td {
+          padding-top: 17px;
+          padding-bottom: 22px;
+        }
+      }
+
+      tr:not(:last-child) td {
+        border-bottom-style: $border-style;
+        border-bottom-color: $border-color-light;
+      }
     }
   }
-}
 
-.geo-loading-indicator {
-  animation: fade-in-out 1s linear infinite;
-}
+  .geo-loading-indicator {
+    animation: fade-in-out 1s linear infinite;
+  }
 
-@keyframes fade-in-out {
-  50% { opacity: 0; };
-}
+  @keyframes fade-in-out {
+    50% { opacity: 0; };
+  }
 
-.is-nearest {
-  color: green;
-}
+  .is-nearest {
+    color: green;
+  }
 
-.is-farthest {
-  color: red;
-}
+  .is-farthest {
+    color: red;
+  }
 
-.is-hidden {
-  display: none !important;
+  .is-hidden {
+    display: none !important;
+  }
 }
