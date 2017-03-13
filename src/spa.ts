@@ -1,6 +1,6 @@
 import xs, { Stream } from 'xstream'
 import flattenConcurrently from 'xstream/extra/flattenConcurrently'
-import { VNode, DOMSource, body, h1, h2, dl, dt, dd, pre, code, p } from '@cycle/dom'
+import { VNode, DOMSource, body, section, h1, h2, dl, dt, dd, pre, code, p } from '@cycle/dom'
 import { HTTPSource, RequestOptions, Response } from '@cycle/http'
 import { Mission, LatLng, AddressesWithData, AddressWithData } from './interfaces'
 import * as stringify from 'stringify-object'
@@ -110,14 +110,14 @@ export default ({ DOM, HTTP, missions: missions$ }: Sources) => {
     missions,
     isolationVnode,
     missionsTableVnode
-  ]) => (
-    body(
-      {
-        props: {
-          id: '' // workaround for https://github.com/cyclejs/cyclejs/issues/540
-        }
-      },
-      [
+  ]) => body(
+    {
+      props: {
+        id: '' // workaround for https://github.com/cyclejs/cyclejs/issues/540
+      }
+    },
+    [
+      section([
         h1('MI6 missions report'),
         dl([
           dt('agent'),
@@ -135,13 +135,11 @@ export default ({ DOM, HTTP, missions: missions$ }: Sources) => {
         h2('Raw missions data'),
         p('The missions data contains corrupted parts. From my experience in the field, it appears to be a result of a sabotage. Likely that field agent who went rogue in \'98.'),
         p('As you can see below, the corruptions are in some of the dates. They were not manually altered—they were handled in the code.'),
-        pre(code(stringify(missions, { indent: '  ' }))),
-        h2('Isolation'),
-        isolationVnode,
-        h2('Missions table'),
-        missionsTableVnode
-      ]
-    )
+        pre(code(stringify(missions, { indent: '  ' })))
+      ]),
+      isolationVnode,
+      missionsTableVnode
+    ]
   ))
 
   return {

@@ -1,4 +1,4 @@
-import { DOMSource, section, p, a, em, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
+import { DOMSource, section, h2, p, a, em, table, thead, tfoot, tbody, tr, th, td, label, input } from '@cycle/dom'
 import xs, { Stream } from 'xstream'
 import dropUntil from 'xstream/extra/dropUntil'
 import { Mission } from './interfaces'
@@ -96,6 +96,7 @@ export default ({
   ]) => section(
     { class: { 'missions-table': true } },
     [
+      h2('Missions table'),
       p([
         'The font in the confidential source material was identified as ',
         a(

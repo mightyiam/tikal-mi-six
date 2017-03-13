@@ -1,6 +1,6 @@
 import xs, { Stream } from 'xstream'
 import { Mission } from './interfaces'
-import { DOMSource, div, table, tr, th, td, h3, p, strong } from '@cycle/dom'
+import { DOMSource, section, table, tr, th, td, h2, h3, p, strong } from '@cycle/dom'
 import { VNode } from 'snabbdom/vnode'
 
 const isolatedBGColor: string = 'rgba(0, 0, 0, 0.382)'
@@ -86,8 +86,9 @@ export default ({ DOM, missions: missions$ }: Sources) => {
     missions,
     { agents, countries },
     highestIsolationDegree
-  ]) => {
-    return div([
+  ]) => section(
+    [
+      h2('Isolation'),
       h3('Missions'),
       table([
         tr([
@@ -150,7 +151,7 @@ export default ({ DOM, missions: missions$ }: Sources) => {
         })
       ])
     ])
-  })
+  )
 
   return {
     DOM: vnode$
