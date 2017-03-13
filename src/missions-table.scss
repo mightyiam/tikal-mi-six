@@ -139,12 +139,19 @@ section.missions-table {
     50% { opacity: 0; };
   }
 
-  .is-nearest {
-    color: green;
+  $nearest-color: green;
+  $farthest-color: red;
+
+  .is-nearest:not(.is-farthest) {
+    color: $nearest-color;
   }
 
-  .is-farthest {
-    color: red;
+  .is-farthest:not(.is-nearest) {
+    color: $farthest-color;
+  }
+
+  .is-nearest.is-farthest {
+    color: mix($nearest-color, $farthest-color)
   }
 
   .is-hidden {

@@ -81,6 +81,13 @@ export default ({
     .events('change')
     .fold(value => !value, false)
 
+  const deleteMissionI$: Stream<null | number> = DOM
+    .select('.delete')
+    .events('click')
+    .map(clickEvent => (
+      Number((clickEvent.currentTarget as HTMLButtonElement).dataset.i)
+    ))
+
   const vnode$: Stream<VNode> = xs.combine(
     dateSortedMissions$,
     addressesWithData$,
@@ -124,19 +131,19 @@ export default ({
           ])),
           tfoot(tr(td(
             {
-              attrs: { colspan: showExtraData ? 6 : 4}
+              attrs: { colspan: 7 }
             },
             String(dateSortedMissions.length) + ' missions'
           ))),
-          tbody(dateSortedMissions.map(({ agent, country, address, date }) => {
+          tbody(dateSortedMissions.map(({ agent, country, address, date, i }) => {
             const geoData = addressesWithData[address]
             return tr(
-              { class: {
+              { key: i, class: {
                 ['is-nearest']: geoData && geoData.distanceToNumber10 === shortestDistanceTo10,
                 ['is-farthest']: geoData && geoData.distanceToNumber10 === longestDistanceTo10
               } },
               [
-                td({ class: { 'delete-cell': true } }, button({ class: { delete: true } })),
+                td({ class: { 'delete-cell': true } }, button({ class: { delete: true }, dataset: { i: String(i) } })),
                 td(agent),
                 td(country),
                 td(address),
@@ -161,6 +168,7 @@ export default ({
   ))
 
   return {
-    DOM: vnode$
+    DOM: vnode$,
+    deleteMissionI: deleteMissionI$
   }
 }
